@@ -16,13 +16,13 @@ class CreateSupplierTable extends Migration
         Schema::create('supplier', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
-            $table->string('phone_number');
-            $table->string('email');
-            $table->string('website');
-            $table->string('bank_name');
-            $table->string('bank_account_number');
-            $table->boolean('isEnabled');
+            $table->string('address', 100)->nullable()->default('');
+            $table->string('contact', 100)->nullable();
+            $table->string('email', 100)->nullable();
+            $table->string('website', 100)->nullable();
+            $table->string('bank_name', 100)->nullable();
+            $table->string('bank_account_number',100)->nullable();
+            $table->boolean('isActive')->nullable()->default(true);
             $table->timestamps();
         });
     }

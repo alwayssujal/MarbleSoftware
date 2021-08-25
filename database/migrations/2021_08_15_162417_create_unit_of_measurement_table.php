@@ -15,9 +15,10 @@ class CreateUnitOfMeasurementTable extends Migration
     {
         Schema::create('unit_of_measurement', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description');
-            $table->boolean('isEnabled');
+            $table->string('name', 20);
+            $table->string('title', 20);
+            $table->longText('description')->nullable()->default('');
+            $table->boolean('isEnabled')->nullable()->default(true);
             $table->timestamps();
         });
     }

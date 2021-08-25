@@ -16,8 +16,8 @@ class CreateItemCategoryTable extends Migration
         Schema::create('item_category', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('description');
-            $table->boolean('isEnabled');
+            $table->longText('description')->nullable()->default('Item Category');
+            $table->boolean('isActive')->nullable()->default(true);
             $table->timestamps();
         });
     }

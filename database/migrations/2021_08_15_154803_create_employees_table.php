@@ -16,18 +16,18 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
 
             $table->id();
-            $table->string('firstname');
-            $table->string('middlename')->nullable();
-            $table->string('lastname');
-            $table->string('phone_number');
-            $table->string('email');
-            $table->dateTime('hired_date');
-            $table->string('address');
-            $table->string('employee_category_id');
-            $table->boolean('isEnabled');
-            $table->string('pan_number')->nullable();
-            $table->string('citizenship_number')->nullable();
-            $table->integer('salary')->nullable();
+            $table->string('firstname', 100)->nullable();
+            $table->string('middlename', 100)->nullable();
+            $table->string('lastname', 100)->nullable();
+            $table->string('contact', 20)->nullable();
+            $table->string('email', 50)->nullable();
+            $table->date('hired_date')->nullable();
+            $table->string('address', 100)->nullable();
+            $table->integer('employee_category_id');
+            $table->boolean('isActive')->nullable()->default(true);
+            $table->string('pan', 100)->nullable();
+            $table->string('citizenship_number', 100)->nullable();
+            $table->integer('salary')->unsigned()->nullable()->default(0);
             $table->date('dob')->nullable();
             $table->timestamps();
         });

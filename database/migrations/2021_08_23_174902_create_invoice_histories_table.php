@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInventoryTable extends Migration
+class CreateInvoiceHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateInventoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventory', function (Blueprint $table) {
+        Schema::create('invoice_histories', function (Blueprint $table) {
             $table->id();
-            $table->integer('good_receive_id');
-            $table->integer('item_id');
-            $table->integer('in_stock');
-            $table->integer('out_stock');
-            $table->integer('available_stock');
+            $table->integer('invoice_id');
+            $table->date('date')->nullable;
+            $table->string('status', 20)->nullable()->default('Draft');
+            $table->longText('description')->nullable()->default('');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateInventoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventory');
+        Schema::dropIfExists('invoice_histories');
     }
 }

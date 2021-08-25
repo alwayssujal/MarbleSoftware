@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeeCategoryTable extends Migration
+class CreateInvoiceTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateEmployeeCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_category', function (Blueprint $table) {
+        Schema::create('invoice_transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->longText('description')->nullable()->default('Employee Category');
-            $table->boolean('isActive')->nullable()->default(true);
+            $table->integer('invoice_id');
+            $table->date('date')->nullable();
+            $table->double('amount', 15, 2)->nullable()->default(0.00);
+            $table->string('mode', 20)->nullable()->default('Cash');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateEmployeeCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_category');
+        Schema::dropIfExists('invoice_transactions');
     }
 }

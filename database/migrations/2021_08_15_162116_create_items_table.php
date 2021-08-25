@@ -16,14 +16,13 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('item_category_id');           
+            $table->string('name', 100);
+            $table->integer('item_category_id');
             $table->integer('unit_of_measurement_id');
-            $table->longText('description');
-            $table->double('purchase_price');
-            $table->double('sell_price');
-            $table->integer('created_by_user_id');
-            $table->boolean('isEnabled');
+            $table->longText('description')->nullable()->default('Item');
+            $table->double('sell_price', 10, 2)->nullable()->default(0.00);
+            $table->integer('user_id');
+            $table->boolean('isActive')->nullable()->default(true);
             $table->timestamps();
         });
     }

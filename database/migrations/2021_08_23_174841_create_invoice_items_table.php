@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWriteOffTable extends Migration
+class CreateInvoiceItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateWriteOffTable extends Migration
      */
     public function up()
     {
-        Schema::create('write_off', function (Blueprint $table) {
+        Schema::create('invoice_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('good_receive_id');
             $table->integer('item_id');
-            $table->integer('quantity');
-            $table->dateTime('write_off_date');
-            $table->string('write_off_date_nepali');
-            $table->integer('entered_by_user_id');
+            $table->string('particular', 100)->nullable();
+            $table->integer('quantity')->unsigned()->nullable()->default(1);
+            $table->double('rate', 15, 2)->nullable()->default(0.00);
+            $table->double('amount', 15, 2)->nullable()->default(0.00);
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateWriteOffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('write_off');
+        Schema::dropIfExists('invoice_items');
     }
 }
