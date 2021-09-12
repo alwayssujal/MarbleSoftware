@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmployeeCategoryController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/employees', EmployeesController::class);
 
 Route::resource('/employees_category', EmployeeCategoryController::class);
+
+Route::resource('/customer', CustomerController::class);

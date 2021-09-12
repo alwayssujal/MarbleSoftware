@@ -66,7 +66,6 @@ class EmployeeCategoryController extends Controller
      */
     public function edit($id)
     {
-         
         $employees_category=Employee_Category::find($id);
         return view('employees_category.edit')->with('employees_category', $employees_category);
     }
